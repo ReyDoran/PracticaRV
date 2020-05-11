@@ -12,12 +12,20 @@ public class RingScript : MonoBehaviour
     public Material activatedMaterial;
     public Material deactivatedMaterial;
     public RaceManager raceManager;
+    private Transform meshTransf;
+    public GameObject pointLight;
 
     // Start is called before the first frame update
     void Start()
     {
         Deactivate();
         raceManager = (RaceManager) GameObject.FindObjectOfType(typeof(RaceManager));
+        meshTransf = mesh.GetComponent<Transform>();
+    }
+
+    void Update()
+    {
+        meshTransf.Rotate(0, 1, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,18 +40,15 @@ public class RingScript : MonoBehaviour
     public void Activate()
     {
         activated = true;
-        mesh.material = activatedMaterial;
+        pointLight.SetActive(true);
+        //mesh.material = activatedMaterial;
     }
 
     public void Deactivate()
     {
         activated = false;
-        mesh.material = deactivatedMaterial;
+        pointLight.SetActive(false);
+        //mesh.material = deactivatedMaterial;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
