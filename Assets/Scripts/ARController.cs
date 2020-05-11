@@ -21,6 +21,8 @@
          * (360.0, 253.4, 359.1) - (0.0, 0.0, 0.0)
          * 
          */
+         //Propuesta 10 
+         public int pitchFactor;
 
 
         public PlayerMovement player;
@@ -83,7 +85,7 @@
                     if (rotation.eulerAngles.z > rotationMax.z) rotationMax.z = rotation.eulerAngles.z;
                     Fin eliminar*/
                     player.Yaw(rotation.eulerAngles.z - 180);
-                    player.Pitch(position.z * 360/10 - 180);
+                    player.Pitch(position.z * 360/pitchFactor - 180);
                     //player.Pitch()
                 }
                 count++;
