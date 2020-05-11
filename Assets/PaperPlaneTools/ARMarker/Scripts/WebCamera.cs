@@ -17,7 +17,8 @@ namespace PaperPlaneTools.AR
 		/// <summary>
 		/// Target surface to render WebCam stream
 		/// </summary>
-		public GameObject Surface;
+		//Para evitar error consola ya que no renderizamos el input de la camara
+		//public GameObject Surface;
 
 		protected Nullable<WebCamDevice> webCamDevice = null;
 		protected WebCamTexture webCamTexture = null;
@@ -187,6 +188,7 @@ namespace PaperPlaneTools.AR
 		/// </summary>
 		private void RenderFrame()
 		{
+			/* Para evitar error en consola ya que no renderizamos el input de la cámara
 			if (renderedTexture != null)
 			{
 				// apply
@@ -195,6 +197,7 @@ namespace PaperPlaneTools.AR
 				// Adjust image ration according to the texture sizes 
 				Surface.GetComponent<RectTransform>().sizeDelta = new Vector2(renderedTexture.width, renderedTexture.height);
 			}
+			*/
 		}
 	}
 }
