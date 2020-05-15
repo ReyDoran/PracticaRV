@@ -112,8 +112,29 @@ namespace PaperPlaneTools.AR
 		/// </summary>
 		protected virtual void Awake()
 		{
+			/* Anterior
 			if (WebCamTexture.devices.Length > 0)
 				DeviceName = WebCamTexture.devices[WebCamTexture.devices.Length - 1].name;
+			*/
+			if (WebCamTexture.devices.Length > 0)
+			{
+				int cameraIndex = -1;
+				for (int i = 0; i < WebCamTexture.devices.Length; i++) {
+					WebCamDevice webCamDevice = WebCamTexture.devices [i];
+					if (webCamDevice.isFrontFacing == false) {
+						cameraIndex = i;
+						break;
+					}
+					if (cameraIndex < 0) {
+						cameraIndex = i;
+					}
+				}
+				
+				if (cameraIndex >= 0) {
+					DeviceName = WebCamTexture.devices [cameraIndex].name;
+					//webCamDevice = WebCamTexture.devices [cameraIndex];
+				}
+			}
 		}
 
 		//		protected virtual void Awake()

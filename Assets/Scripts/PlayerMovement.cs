@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     public void Yaw(float angle)
     {
         //position.Rotate(Vector3.up * yaw * angle, Space.World);
-        body.AddTorque(Vector3.up * yawFactor * angle);
+        body.AddTorque(Vector3.up * yawFactor * -angle);
         Vector3 cabinRotation = cabin.rotation.eulerAngles;
         cabin.rotation = Quaternion.Euler(cabinRotation.x, cabinRotation.y, - angle * fakeRollFactor);
     }
